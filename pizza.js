@@ -218,14 +218,14 @@ class Pizza {
 class RoundPizza extends Pizza {
     constructor(id, name) {
         super(id, (name != "") ? name : "Runde Pizza");
-        this.iRadius = this.createNumberInput("radius", "Radius", "cm", 20);
+        this.iDiameter = this.createNumberInput("diameter", "Durchmesser", "cm", 20);
     }
 
     get crust() {
         return clampNumberInput(this.iCrust, 0.1, this.radius / 2);
     }
     get radius() {
-        return clampNumberInput(this.iRadius, 1, 0);
+        return clampNumberInput(this.iDiameter, 1, 0) / 2;
     }
     get totalArea() {
         return Math.PI * this.radius ** 2;
