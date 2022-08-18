@@ -317,8 +317,8 @@ class RoundPizza extends Pizza {
 class RectangularPizza extends Pizza {
     constructor(id, name) {
         super(id, (name != "") ? name : tlt["squarePizza"]);
-        this.iA = this.createNumberInput("a", tlt["sideA"], "cm", "18");
-        this.iB = this.createNumberInput("b", tlt["sideB"], "cm", "15");
+        this.iA = this.createNumberInput("a", tlt["sideA"], "cm", "20");
+        this.iB = this.createNumberInput("b", tlt["sideB"], "cm", "16");
 
         this.tPos = [];
     }
