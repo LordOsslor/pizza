@@ -2,7 +2,13 @@
 let pizzaDict = {};
 let idIndex = 0;
 
+const pizzaBaseColor = "#875827";
+const pizzaBorderColor = "#000000";
+const cheeseColor = "#f5d976";
+const salamiColor = "#953144";
 
+const margin = 5;
+const salamiSize = 1;
 
 //#region Common Pizza Functions
 function createElement(type, parent, params = {}) {
@@ -92,8 +98,6 @@ class Pizza {
         //create Common Inputs
         this.iPrice = this.createNumberInput("price", "Preis", "€", 10);
         this.iCrust = this.createNumberInput("crust", "Rand", "cm", 1);
-
-
 
         //create Output Div
         this.oDiv = createElement("div", this.pizzaElement, { classes: ["output"] })
@@ -237,7 +241,7 @@ class RoundPizza extends Pizza {
 
     populateTopping(ctx, cx, cy, rT, scale) {
 
-        var salamiRadius = scale;
+        var salamiRadius = salamiSize * scale;
 
         //arbitrary Values
         var alpha = 2;
@@ -264,11 +268,10 @@ class RoundPizza extends Pizza {
             var y = cy + (rT - 2 * salamiRadius) * (r * Math.sin(theta));
 
             //plot Calculated Salami Position
-            plotCircle(ctx, x, y, salamiRadius, "#953144");
+            plotCircle(ctx, x, y, salamiRadius, salamiColor);
         }
     }
     updateDisplay(ctx) {
-        var margin = 5;
         //canvas Center
         var centerX = this.cSize[0] / 2;
         var centerY = this.cSize[1] / 2;
@@ -283,15 +286,15 @@ class RoundPizza extends Pizza {
         //draw Pizza Base
         ctx.beginPath();
         ctx.arc(centerX, centerY, baseRadius, 0, 2 * Math.PI);
-        ctx.fillStyle = "#875827";
+        ctx.fillStyle = pizzaBaseColor;
         ctx.fill();
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#000000"
+        ctx.strokeStyle = pizzaBorderColor
         ctx.stroke();
         ctx.closePath();
 
         //draw Pizza Topping
-        plotCircle(ctx, centerX, centerY, toppingRadius, "#f5d976");
+        plotCircle(ctx, centerX, centerY, toppingRadius, cheeseColor);
 
         this.populateTopping(ctx, centerX, centerY, toppingRadius, scale * 0.75, 2);
     }
@@ -327,7 +330,7 @@ class RectangularPizza extends Pizza {
 
     populateTopping(ctx, originX, originY, x, y, scale) {
         //1cm Salami
-        var salamiRadius = 1 * scale;
+        var salamiRadius = salamiSize * scale;
         var boundingSize = 2.5 * salamiRadius;
 
         //salami Count
@@ -350,16 +353,19 @@ class RectangularPizza extends Pizza {
                 }
 
                 //draw Salami
-                plotCircle(ctx, rnd(cornerX, sizeX, 1.1 * salamiRadius), rnd(cornerY, sizeY, 1.1 * salamiRadius), salamiRadius, "#953144");
+                plotCircle(
+                    ctx,
+                    rnd(cornerX, sizeX, 1.1 * salamiRadius),
+                    rnd(cornerY, sizeY, 1.1 * salamiRadius),
+                    salamiRadius,
+                    salamiColor
+                );
             }
 
         }
     }
 
     updateDisplay(ctx) {
-        ctx.clearRect(0, 0, 250, 250);
-        var margin = 5;
-
         //centers
         var cx = this.cSize[0] / 2;
         var cy = this.cSize[1] / 2;
@@ -379,13 +385,13 @@ class RectangularPizza extends Pizza {
         x = scale * x;
         y = scale * y;
 
-        //draw 
+        //draw Pizza Base
         ctx.beginPath();
         ctx.rect(cx - x / 2, cy - y / 2, x, y);
-        ctx.fillStyle = "#875827";
+        ctx.fillStyle = pizzaBaseColor;
         ctx.fill();
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#000000"
+        ctx.strokeStyle = pizzaBorderColor;
         ctx.stroke();
         ctx.closePath();
 
@@ -396,7 +402,7 @@ class RectangularPizza extends Pizza {
         var oy = cy - y / 2;
         ctx.beginPath();
         ctx.rect(ox, oy, x, y);
-        ctx.fillStyle = "#f5d976";
+        ctx.fillStyle = cheeseColor;
         ctx.fill();
         ctx.closePath();
 
