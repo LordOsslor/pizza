@@ -84,7 +84,7 @@ class Pizza {
 
         //create Base Element
         this.pizzaElement = createElement("div", document.getElementById("pizzaSpace"), {
-            classes: ["pizza"]
+            classes: ["pizzaElement"]
         });
 
         //create Header
@@ -95,7 +95,7 @@ class Pizza {
 
         //create Input Form
         this.iForm = createElement("form", this.pizzaElement, {
-            classes: ["input"],
+            classes: ["pizzaInput"],
             attributes: {
                 oninput: "updatePizza(" + id + ")"
             }
@@ -115,7 +115,7 @@ class Pizza {
         this.iCrust = this.createNumberInput("crust", tlt["crust"], "cm", 1);
 
         //create Output Div
-        this.oDiv = createElement("div", this.pizzaElement, { classes: ["output"] })
+        this.oDiv = createElement("div", this.pizzaElement, { classes: ["pizzaOutput"] })
 
         //create Output Details
         this.oDetails = document.createElement("details")
@@ -135,7 +135,7 @@ class Pizza {
         //create Pizza Display
         this.cSize = [250, 250]
         this.oDisplay = createElement("canvas", this.oDiv, {
-            classes: ["display"],
+            classes: ["pizzaDisplay"],
             attributes: {
                 width: this.cSize[0],
                 height: this.cSize[1]
@@ -181,7 +181,7 @@ class Pizza {
 
         //create A Label
         createElement("span", parentElement, {
-            classes: "outputLabel",
+            classes: ["outputLabel"],
             text: labelText.concat(": ")
         });
 
