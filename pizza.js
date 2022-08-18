@@ -375,8 +375,8 @@ class RectangularPizza extends Pizza {
         var sy = this.cSize[1] - 2 * margin;
 
         //assign Dimensions
-        var x = this.b;
-        var y = this.a;
+        var x = this.a;
+        var y = this.b;
 
         //scale
         var scale = Math.min(sx / x, sy / y);
