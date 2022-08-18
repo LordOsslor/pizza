@@ -80,6 +80,8 @@ class Pizza {
     constructor(id, name) {
         this.id = id;
         this.name = name;
+        this.toppingRotation = Math.random() * 2 * Math.PI;
+
         console.log("Creating Pizza \"" + this.name + "\" with id: " + this.id);
 
         //create Base Element
@@ -255,7 +257,6 @@ class RoundPizza extends Pizza {
 
 
     populateTopping(ctx, cx, cy, rT, scale) {
-
         var salamiRadius = salamiSize * scale;
 
         //arbitrary Values
@@ -279,8 +280,8 @@ class RoundPizza extends Pizza {
         for (let k = 1; k < n; k++) {
             var r = calcPolarRadius(k, n, b);
             var theta = 2 * Math.PI * k / phi ** 2;
-            var x = cx + (rT - 2 * salamiRadius) * (r * Math.cos(theta));
-            var y = cy + (rT - 2 * salamiRadius) * (r * Math.sin(theta));
+            var x = cx + (rT - 2 * salamiRadius) * (r * Math.cos(theta + this.toppingRotation));
+            var y = cy + (rT - 2 * salamiRadius) * (r * Math.sin(theta + this.toppingRotation));
 
             //plot Calculated Salami Position
             plotCircle(ctx, x, y, salamiRadius, salamiColor);
