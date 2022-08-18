@@ -296,7 +296,7 @@ class RoundPizza extends Pizza {
         //draw Pizza Topping
         plotCircle(ctx, centerX, centerY, toppingRadius, cheeseColor);
 
-        this.populateTopping(ctx, centerX, centerY, toppingRadius, scale * 0.75, 2);
+        this.populateTopping(ctx, centerX, centerY, toppingRadius, scale, 2);
     }
 }
 class RectangularPizza extends Pizza {
@@ -331,7 +331,7 @@ class RectangularPizza extends Pizza {
     populateTopping(ctx, originX, originY, x, y, scale) {
         //1cm Salami
         var salamiRadius = salamiSize * scale;
-        var boundingSize = 2.5 * salamiRadius;
+        var boundingSize = 3 * salamiRadius;
 
         //salami Count
         var countX = Math.floor(x / boundingSize);
