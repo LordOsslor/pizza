@@ -240,7 +240,7 @@ class RoundPizza extends Pizza {
         return clampNumberInput(this.iCrust, 0.1, this.radius / 2);
     }
     get radius() {
-        return clampNumberInput(this.iDiameter, 1, 0) / 2;
+        return clampNumberInput(this.iDiameter, 1, -1) / 2;
     }
     get totalArea() {
         return Math.PI * this.radius ** 2;
