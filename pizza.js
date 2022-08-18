@@ -10,6 +10,21 @@ const salamiColor = "#953144";
 const margin = 5;
 const salamiSize = 1;
 
+const tlt = {
+    deletePizza: "Pizza löschen",
+    price: "Preis",
+    crust: "Rand",
+    toppingArea: "Belagfläche",
+    pricePerToppingArea: "Preis pro Belagfläche",
+    totalArea: "Gesamtfläche",
+    crustArea: "Randfläche",
+    roundPizza: "Runde Pizza",
+    diameter: "Durchmesser",
+    squarePizza: "Rechteckige Pizza",
+    sideA: "Seite A",
+    sideB: "Seite B"
+}
+
 //#region Common Pizza Functions
 function createElement(type, parent, params = {}) {
     var element = document.createElement(type);
@@ -92,12 +107,12 @@ class Pizza {
             attributes: {
                 onclick: "deletePizza(" + id + ")"
             },
-            text: "Pizza löschen"
+            text: tlt["deletePizza"]
         });
 
         //create Common Inputs
-        this.iPrice = this.createNumberInput("price", "Preis", "€", 10);
-        this.iCrust = this.createNumberInput("crust", "Rand", "cm", 1);
+        this.iPrice = this.createNumberInput("price", tlt["price"], "€", 10);
+        this.iCrust = this.createNumberInput("crust", tlt["crust"], "cm", 1);
 
         //create Output Div
         this.oDiv = createElement("div", this.pizzaElement, { classes: ["output"] })
@@ -107,12 +122,12 @@ class Pizza {
         this.oDetails.classList.add("outputDetails");
 
         //create Common Outputs
-        this.oToppingArea = this.createNumberOutput("Belagfläche", "cm²");
-        this.oToppingPPA = this.createNumberOutput("Preis pro Belagfläche", "ct/cm²")
+        this.oToppingArea = this.createNumberOutput(tlt["toppingArea"], "cm²");
+        this.oToppingPPA = this.createNumberOutput(tlt["pricePerToppingArea"], "ct/cm²")
 
         //create Common Detail Outputs
-        this.oTotalArea = this.createNumberOutput("Gesamtfläche", "cm²", true);
-        this.oCrustArea = this.createNumberOutput("Randfläche", "cm²", true);
+        this.oTotalArea = this.createNumberOutput(tlt["totalArea"], "cm²", true);
+        this.oCrustArea = this.createNumberOutput(tlt["crustArea"], "cm²", true);
 
         //append The Detail List At The End
         this.oDiv.appendChild(this.oDetails);
@@ -217,8 +232,8 @@ class Pizza {
 }
 class RoundPizza extends Pizza {
     constructor(id, name) {
-        super(id, (name != "") ? name : "Runde Pizza");
-        this.iDiameter = this.createNumberInput("diameter", "Durchmesser", "cm", 20);
+        super(id, (name != "") ? name : tlt["roundPizza"]);
+        this.iDiameter = this.createNumberInput("diameter", tlt["diameter"], "cm", 20);
     }
 
     get crust() {
@@ -301,9 +316,9 @@ class RoundPizza extends Pizza {
 }
 class RectangularPizza extends Pizza {
     constructor(id, name) {
-        super(id, (name != "") ? name : "Rechteckige Pizza");
-        this.iA = this.createNumberInput("a", "Seite A", "cm", "10");
-        this.iB = this.createNumberInput("b", "Seite B", "cm", "10");
+        super(id, (name != "") ? name : tlt["squarePizza"]);
+        this.iA = this.createNumberInput("a", tlt["sideA"], "cm", "18");
+        this.iB = this.createNumberInput("b", tlt["sideB"], "cm", "15");
 
         this.tPos = [];
     }
