@@ -1,4 +1,18 @@
-div.pizzaElement {}
+div.pizzaSpace {
+    display: table;
+}
+
+div.pizzaElement {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: left;
+    /* width: 100px;
+    height: 100px; */
+    border: 5px dashed #000;
+    margin: 5px;
+    text-align: center;
+}
 
 .pizzaHeader {}
 
@@ -14,7 +28,9 @@ canvas.pizzaDisplay {}
 
 label.inputLabel {}
 
-input.numberInput {}
+input.numberInput {
+    max-width: 50px;
+}
 
 span.outputLabel {}
 

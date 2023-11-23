@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="de">
+
+<head>
+    <title>Pizzapreisrechner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="pizzaCreator">
+        <h2>Pizza Erstellen:</h2>
+        <form onsubmit="createPizza(); return false">
+            <label for="pizzaType" class="name">Pizzatyp:</label>
+            <select name="pizzaType" id="pizzaType">
+                <option value="round">Rund</option>
+                <option value="rectangular">Rechteckig</option>
+            </select>
+            <br>
+            <label for="pizzaName">Pizza Name:</label>
+            <input id="pizzaName" type="text" name="pizzaName" , autocomplete="off">
+            <input type="submit" value="+">
+        </form>
+    </div>
+    <div id="pizzaSpace"></div>
+    <script type="text/javascript" src="pizza.js"></script>
+    <noscript>
+        :(
+    </noscript>
+</body>
+
+</html>
