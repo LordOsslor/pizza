@@ -113,8 +113,8 @@ class Pizza {
         });
 
         //create Common Inputs
-        this.iPrice = this.createNumberInput("price", tlt["price"], "€", 10);
-        this.iCrust = this.createNumberInput("crust", tlt["crust"], "cm", 1);
+        this.iPrice = this.createNumberInput("price", tlt["price"], "€", 10, 1);
+        this.iCrust = this.createNumberInput("crust", tlt["crust"], "cm", 1, 0.2);
 
         //create Output Div
         this.oDiv = createElement("div", this.pizzaElement, { classes: ["pizzaOutput"] })
@@ -144,7 +144,7 @@ class Pizza {
             }
         });
     }
-    createNumberInput(inputName, labelText, unitText, defaultValue) {
+    createNumberInput(inputName, labelText, unitText, defaultValue, step = 1) {
         //create A Label
         createElement("label", this.iForm, {
             classes: ["inputLabel"],
@@ -160,7 +160,8 @@ class Pizza {
             attributes: {
                 type: "number",
                 name: inputName,
-                value: defaultValue
+                value: defaultValue,
+                step: step
             }
         });
 
@@ -235,7 +236,7 @@ class Pizza {
 class RoundPizza extends Pizza {
     constructor(id, name) {
         super(id, (name != "") ? name : tlt["roundPizza"]);
-        this.iDiameter = this.createNumberInput("diameter", tlt["diameter"], "cm", 20);
+        this.iDiameter = this.createNumberInput("diameter", tlt["diameter"], "cm", 32);
     }
 
     get crust() {
